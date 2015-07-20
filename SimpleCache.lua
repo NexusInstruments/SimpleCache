@@ -10,13 +10,14 @@
 --	A Simple Key/Value Cache
 ------------------------------------------------------------------------------------------------
 local PackageName, Major, Minor, Patch = "SimpleCache", 1, 0, 0
-local PkgMajor, PkgMinor = PackageName, tonumber(sting.format("%02d%02d%02d", Major, Minor, Patch))
+local PkgMajor, PkgMinor = PackageName, tonumber(string.format("%02d%02d%02d", Major, Minor, Patch))
 local Pkg = Apollo.GetPackage(PkgMajor)
 if Pkg and (Pkg.nVersion or 0) >= PkgMinor then
   return -- no upgrade needed
 end
 -- Set a reference to the actual package or create an empty table
-local SimpleCache = C_Pkg and C_Pkg.tPackage or {}
+local SimpleCache = Pkg and Pkg.tPackage or {}
+
 
 function SimpleCache:new(o)
   o = o or {}
