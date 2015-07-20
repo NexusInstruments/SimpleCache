@@ -16,7 +16,7 @@ if Pkg and (Pkg.nVersion or 0) >= PkgMinor then
   return -- no upgrade needed
 end
 -- Set a reference to the actual package or create an empty table
-local SimpleCache = C_Pkg and C_Pkg.tPackage or {}
+local SimpleCache = Pkg and Pkg.tPackage or {}
 
 function SimpleCache:new(o)
   o = o or {}
